@@ -6,3 +6,4 @@ pandas
 scikit-learn
 codecarbon==2.3.0
 python-multipart==0.0.5
+setuptools==69.0.3
