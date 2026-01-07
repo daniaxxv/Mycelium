@@ -1,3 +1,4 @@
+from groq import Groq  # SDK для Grok
 """
 AI Agent for User Clustering with Energy Optimization
 Protocol: 80% Cosine Similarity Threshold
@@ -298,4 +299,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
