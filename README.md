@@ -28,6 +28,7 @@ class UserClusteringAgent:
         self.baseline_user_count = 0
         self.new_users_count = 0
         self.last_clustering_timestamp = None
+        self.grok_client = Groq(api_key=os.getenv("GROK_API_KEY"))  # Key з env
         
         # Re-clustering triggers
         self.triggers = {
