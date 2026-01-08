@@ -94,6 +94,9 @@ class UserClusteringAgent:
         """Perform K-means clustering"""
         kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
         labels = kmeans.fit_predict(X)
+interest_texts = df['interest_fashion'].astype(str) + " " + df['interest_home'].astype(str)
+interest_embeddings = self.get_grok_embeddings(interest_texts)
+X = np.hstack((X, interest_embeddings))  # Додай до фіч
         
         return labels, kmeans
     
