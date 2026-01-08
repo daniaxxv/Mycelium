@@ -29,6 +29,15 @@ class UserClusteringAgent:
         self.new_users_count = 0
         self.last_clustering_timestamp = None
         self.grok_client = Groq(api_key=os.getenv("GROK_API_KEY"))  # Key з env
+        def get_grok_embeddings(self, texts):
+    embeddings = []
+    for text in texts:
+        completion = self.grok_client.chat.completions.create(
+            messages=[{"role": "user", "content": f"Embed this: {text}"}],
+            model="grok-beta",  # Модель
+        )
+        embeddings.append(completion.choices[0].message.content)  # Приклад, адаптуй якщо embedding в іншому форматі
+    return np.array(embeddings)
         
         # Re-clustering triggers
         self.triggers = {
